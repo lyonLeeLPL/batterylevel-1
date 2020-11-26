@@ -47,11 +47,6 @@ public class MainActivity extends FlutterActivity {
                         (call, result) -> {
                             // Note: this method is invoked on the main thread.
                             if (call.method.equals("getBatteryLevel")) {
-                                try {
-                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__04E3A11", MySplashView.class);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
                                 int batteryLevel = getBatteryLevel();
                                 if (batteryLevel != -1) {
                                     result.success(batteryLevel);
@@ -77,6 +72,11 @@ public class MainActivity extends FlutterActivity {
                     intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
         }
 
+        try {
+            DCUniMPSDK.getInstance().startApp(mContext,"__UNI__04E3A11", MySplashView.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return batteryLevel;
     }
 }
