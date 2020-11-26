@@ -34,7 +34,8 @@ public class MainActivity extends FlutterActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = this;
+        mContext = this.getContext();
+
     }
 
     @Override
