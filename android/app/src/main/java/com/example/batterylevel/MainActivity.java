@@ -3,8 +3,12 @@ package com.example.batterylevel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import io.dcloud.feature.sdk.DCSDKInitConfig;
 import io.dcloud.feature.sdk.DCUniMPJSCallback;
 import io.dcloud.feature.sdk.DCUniMPSDK;
+
+
+import io.dcloud.feature.sdk.MenuActionSheetItem;
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
@@ -23,9 +27,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.unimpdemo.MySplashView;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends FlutterActivity {
     private static final String CHANNEL = "samples.flutter.dev/battery";
@@ -36,6 +43,22 @@ public class MainActivity extends FlutterActivity {
         super.onCreate(savedInstanceState);
         mContext = this.getContext();
 
+        MenuActionSheetItem item = new MenuActionSheetItem("关于", "gy");
+        List<MenuActionSheetItem> sheetItems = new ArrayList<>();
+        sheetItems.add(item);
+        DCSDKInitConfig config = new DCSDKInitConfig.Builder()
+                .setCapsule(true)
+                .setMenuDefFontSize("16px")
+                .setMenuDefFontColor("#ff00ff")
+                .setMenuDefFontWeight("normal")
+                .setMenuActionSheetItems(sheetItems)
+                .build();
+        DCUniMPSDK.getInstance().initialize(this, config, new DCUniMPSDK.IDCUNIMPPreInitCallback() {
+            @Override
+            public void onInitFinished(boolean isSuccess) {
+                Log.e("unimp", "onInitFinished-----------"+isSuccess);
+            }
+        });
     }
 
     @Override
@@ -49,7 +72,7 @@ public class MainActivity extends FlutterActivity {
                             // Note: this method is invoked on the main thread.
                             if (call.method.equals("getBatteryLevel")) {
                                 try {
-                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__04E3A11", MySplashView.class);
+                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__04E3A11");
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -67,6 +90,7 @@ public class MainActivity extends FlutterActivity {
     }
 
     private int getBatteryLevel() {
+
         int batteryLevel = -1;
         if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
             BatteryManager batteryManager = (BatteryManager) getSystemService(BATTERY_SERVICE);
