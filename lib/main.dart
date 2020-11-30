@@ -73,6 +73,22 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Future<void> _openMiniProgram2() async {
+    String batteryLevel;
+    try {
+      final int result = await platform.invokeMethod('openMiniProgram2');
+    } on PlatformException catch (e) {
+    }
+  }
+
+  Future<void> _openMiniProgram3() async {
+    try {
+      final int result = await platform.invokeMethod('openMiniProgram3');
+    } on PlatformException catch (e) {
+    }
+
+  }
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -126,8 +142,16 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             RaisedButton(
-              child: Text('Get Battery Level'),
+              child: Text('打开小程序1'),
               onPressed: _getBatteryLevel,
+            ),
+            RaisedButton(
+              child: Text('打开小程序2'),
+              onPressed: _openMiniProgram2,
+            ),
+            RaisedButton(
+              child: Text('打开小程序3'),
+              onPressed: _openMiniProgram3,
             ),
             Text(_batteryLevel),
           ],

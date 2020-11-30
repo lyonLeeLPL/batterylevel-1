@@ -82,7 +82,30 @@ public class MainActivity extends FlutterActivity {
                                 } else {
                                     result.error("UNAVAILABLE", "Battery level not available.", null);
                                 }
-                            } else {
+                            }else if (call.method.equals("_openMiniProgram2")) {
+                                try {
+                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__2108B0A");
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }else if (call.method.equals("_openMiniProgram3")) {
+                                String wgtPath = context.getExternalCacheDir().getPath()+"/__UNI__5032A61.wgt";
+                                DCUniMPSDK.getInstance().releaseWgtToRunPathFromePath("__UNI__04E3A11", wgtPath, new ICallBack() {
+                                    @Override
+                                    public Object onCallBack(int code, Object pArgs) {
+                                        if(code ==1) {//释放wgt完成
+                                            try {
+                                                DCUniMPSDK.getInstance().startApp(context, "__UNI__04E3A11");
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+                                        } else{//释放wgt失败
+                                            Toast.makeText(context, "资源释放失败", Toast.LENGTH_SHORT).show();
+                                        }
+                                        return null;
+                                    }
+                                });
+                            }else {
                                 result.notImplemented();
                             }
                         }
