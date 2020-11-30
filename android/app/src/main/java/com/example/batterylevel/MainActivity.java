@@ -3,6 +3,7 @@ package com.example.batterylevel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import io.dcloud.common.DHInterface.ICallBack;
 import io.dcloud.feature.sdk.DCSDKInitConfig;
 import io.dcloud.feature.sdk.DCUniMPJSCallback;
 import io.dcloud.feature.sdk.DCUniMPSDK;
@@ -36,6 +37,7 @@ import java.util.List;
 
 public class MainActivity extends FlutterActivity {
     private static final String CHANNEL = "samples.flutter.dev/battery";
+    private static final String WGT_PATH = "/Users/li.pinliang/Documents/html";
     Context mContext;
 
     @Override
@@ -59,6 +61,8 @@ public class MainActivity extends FlutterActivity {
                 Log.e("unimp", "onInitFinished-----------"+isSuccess);
             }
         });
+
+        android.util.Log.d("", "onCreate: ");
     }
 
     @Override
@@ -72,7 +76,7 @@ public class MainActivity extends FlutterActivity {
                             // Note: this method is invoked on the main thread.
                             if (call.method.equals("getBatteryLevel")) {
                                 try {
-                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__04E3A11");
+                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__04E3A11",MySplashView.class);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -82,25 +86,26 @@ public class MainActivity extends FlutterActivity {
                                 } else {
                                     result.error("UNAVAILABLE", "Battery level not available.", null);
                                 }
-                            }else if (call.method.equals("_openMiniProgram2")) {
+                            }else if (call.method.equals("openMiniProgram2")) {
                                 try {
                                     DCUniMPSDK.getInstance().startApp(mContext,"__UNI__2108B0A");
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-                            }else if (call.method.equals("_openMiniProgram3")) {
-                                String wgtPath = context.getExternalCacheDir().getPath()+"/__UNI__5032A61.wgt";
-                                DCUniMPSDK.getInstance().releaseWgtToRunPathFromePath("__UNI__04E3A11", wgtPath, new ICallBack() {
+                            }else if (call.method.equals("openMiniProgram3")) {
+                                String wgtPath = mContext.getExternalCacheDir().getPath()+"/__UNI__5032A61.wgt";
+                                android.util.Log.d("dsadsa", "configureFlutterEngine: " + wgtPath);
+                                DCUniMPSDK.getInstance().releaseWgtToRunPathFromePath("__UNI__5032A61.wgt", wgtPath, new ICallBack() {
                                     @Override
                                     public Object onCallBack(int code, Object pArgs) {
                                         if(code ==1) {//释放wgt完成
                                             try {
-                                                DCUniMPSDK.getInstance().startApp(context, "__UNI__04E3A11");
+                                                DCUniMPSDK.getInstance().startApp(mContext, "__UNI__5032A61.wgt",MySplashView.class);
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
                                         } else{//释放wgt失败
-                                            Toast.makeText(context, "资源释放失败", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(mContext, "资源释放失败", Toast.LENGTH_SHORT).show();
                                         }
                                         return null;
                                     }
