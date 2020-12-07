@@ -100,7 +100,9 @@ public class MainActivity extends FlutterActivity {
                                     public Object onCallBack(int code, Object pArgs) {
                                         if(code ==1) {//释放wgt完成
                                             try {
-                                                DCUniMPSDK.getInstance().startApp(mContext, "__UNI__5032A61.wgt",MySplashView.class);
+                                                Toast.makeText(getApplicationContext(), wgtPath,
+                                                        Toast.LENGTH_SHORT).show();
+                                                DCUniMPSDK.getInstance().startApp(mContext, "__UNI__5032A61.wgt");
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }

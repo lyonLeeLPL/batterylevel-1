@@ -1,14 +1,18 @@
 #import "AppDelegate.h"
 #import "GeneratedPluginRegistrant.h"
+#import "DCUniMP.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
+    
   FlutterViewController* controller = (FlutterViewController*)self.window.rootViewController;
 
   FlutterMethodChannel* batteryChannel = [FlutterMethodChannel
                                           methodChannelWithName:@"samples.flutter.dev/battery"
                                           binaryMessenger:controller.binaryMessenger];
+    
+
 
   __weak typeof(self) weakSelf = self;
   [batteryChannel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
