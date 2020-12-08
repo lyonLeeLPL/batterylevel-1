@@ -136,43 +136,32 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+      body: Container(
+        child:  Center(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
 
-
-            RaisedButton(
-              shape: StadiumBorder(),
-              color: Colors.green,
-              onPressed: () => _openYoutube(),
-              child: Text('点击启动Youtube'),
-              splashColor: Colors.black,
-            ),
-            RaisedButton(
-              shape: StadiumBorder(),
-              color: Colors.blue,
-              child: Text('打开小程序1'),
-              onPressed: _getBatteryLevel,
-              splashColor: Colors.black,
-            ),
-            RaisedButton(
-              shape: StadiumBorder(),
-              color: Colors.red,
-              child: Text('打开小程序2'),
-              onPressed: _openMiniProgram3,
-              splashColor: Colors.black,
-            ),
-            RaisedButton(
-              shape: StadiumBorder(),
-              color: Colors.deepPurpleAccent,
-              child: Text('打开webview'),
-              onPressed: _openMiniProgram3,
-              splashColor: Colors.black,
-            ),
-          ],
+              RaisedButton(
+                onPressed: () => _openYoutube(),
+                child: Text('点击启动Youtube'),
+              ),
+              RaisedButton(
+                child: Text('打开小程序1'),
+                onPressed: _getBatteryLevel,
+              ),
+              RaisedButton(
+                child: Text('打开小程序2'),
+                onPressed: _openMiniProgram3,
+              ),
+              RaisedButton(
+                child: Text('打开webview'),
+                onPressed: _openMiniProgram3,
+              ),
+            ],
+          ),
         ),
       ),
     );
