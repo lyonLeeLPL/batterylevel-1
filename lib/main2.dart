@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(MyApp());
@@ -87,22 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
       final int result = await platform.invokeMethod('openMiniProgram3');
     } on PlatformException catch (e) {
     }
-  }
 
-  _openYoutube() async {
-    // Android
-    const url = 'vnd.youtube://';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      //  Ios
-      const url = 'youtube://';
-      if(await canLaunch(url)){
-        await launch(url);
-      }else{
-        throw 'Could not launch $url';
-      }
-    }
   }
 
   void _incrementCounter() {
@@ -150,25 +134,34 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            RaisedButton(
-              onPressed: () => _openYoutube(),
-              child: Text('点击启动Youtube'),
+            Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
             ),
             RaisedButton(
-              child: Text('打开小程序1'),
+              child: Text('唤醒第三方应用 youtube'),
               onPressed: _getBatteryLevel,
             ),
             RaisedButton(
               child: Text('打开小程序2'),
-              onPressed: _openMiniProgram3,
+              onPressed: _openMiniProgram2,
             ),
             RaisedButton(
-              child: Text('打开webview'),
+              child: Text('打开小程序3'),
               onPressed: _openMiniProgram3,
             ),
+            Text(_batteryLevel),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
