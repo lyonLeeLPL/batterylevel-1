@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'main2.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'インタセクト スーパーアプリ'),
     );
   }
 }
@@ -89,6 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Future<void> _openWebview() async {
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => WebViewExample()));
+  }
+
   _openYoutube() async {
     // Android
     const url = 'vnd.youtube://';
@@ -130,24 +136,13 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/background.png')
+          ),
+        ),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             RaisedButton(
@@ -164,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             RaisedButton(
               child: Text('打开webview'),
-              onPressed: _openMiniProgram3,
+              onPressed: _openWebview,
             ),
           ],
         ),
