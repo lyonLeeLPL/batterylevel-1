@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'main2.dart';
@@ -16,22 +17,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'インタセクト スーパーアプリ'),
+      home: MyHomePage(title: 'スーパーアプリ'),
     );
   }
 }
@@ -137,33 +126,115 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Container(
-        child:  Center(
-          // Center is a layout widget. It takes a single child and positions it
-          // in the middle of the parent.
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Container(
+                height: 200,
+                //设置背景图片
+                decoration: new BoxDecoration(
+                  image: new DecorationImage(
+                    // fit: BoxFit.cover,
+                    image: new AssetImage('assets/images/logo_intasect.gif'),
+                  ),
+                ),
+              ),
+              Container(
+                // decoration: new BoxDecoration(
+                //     border: new Border.all(color: Color(0xFFFF0000), width: 0.5),
+                //     color: Color(0xFF9E9E9E),
+                //     borderRadius: new BorderRadius.circular((20.0))),
+                child: Table(
+                  children: [
+                    TableRow(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border: new Border.all(color: Colors.grey , width:  1)
+                          ),
+                          height: 150,
+                          child:
+                          IconButton(
+                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                              icon: FaIcon(FontAwesomeIcons.youtube,color: Colors.red,size: 80,),
+                              onPressed: () { print("Pressed"); }
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: new Border.all(color: Colors.grey , width:  1)
+                          ),
+                          height: 150,
+                          child:
+                          IconButton(
+                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                              icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 80,),
+                              onPressed: () { print("Pressed"); }
+                          ),
+                        ),
+                      ],
+                    ),
+                    TableRow(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              border: new Border.all(color: Colors.grey , width:  1)
+                          ),
+                          height: 150,
+                          child:
+                          IconButton(
+                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                              icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 80,),
+                              onPressed: () { print("Pressed"); }
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border: new Border.all(color: Colors.grey , width:  1)
+                          ),
+                          height: 150,
+                          child:
+                          IconButton(
+                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                              icon: FaIcon(FontAwesomeIcons.chrome,color: Colors.redAccent,size: 80,),
+                              onPressed: () { print("Pressed"); }
+                          ),
+                        ),
+                      ],
+                    ),
 
-              RaisedButton(
-                onPressed: () => _openYoutube(),
-                child: Text('点击启动Youtube'),
-              ),
-              RaisedButton(
-                child: Text('打开小程序1'),
-                onPressed: _getBatteryLevel,
-              ),
-              RaisedButton(
-                child: Text('打开小程序2'),
-                onPressed: _openMiniProgram3,
-              ),
-              RaisedButton(
-                child: Text('打开webview'),
-                onPressed: _openMiniProgram3,
+                  ],
+
+                ),
               ),
             ],
           ),
         ),
-      ),
+    );
+  }
+}
+
+class LayoutDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+
+      crossAxisCount: 3,  //一行的 Widget 数量
+      children: <Widget>[
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本'),
+        Text('这是一个文本')
+      ],
     );
   }
 }
