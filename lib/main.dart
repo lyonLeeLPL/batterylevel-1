@@ -180,11 +180,19 @@ class _MyHomePageState extends State<MyHomePage> {
                               border: new Border.all(color: Colors.grey , width:  1)
                           ),
                           height: 150,
-                          child:
-                          IconButton(
-                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                              icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 80,),
-                              onPressed: _openMiniProgram2,
+                          child: Container(
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  IconButton(
+                                    icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 60,),
+                                    onPressed: _openWebview,
+                                  ),
+                                  Spacer(),
+                                  Text("默认文本显示"),
+                                ],
+                              ),
+                            )
                           ),
                         ),
                         Container(
