@@ -156,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                             // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
                               icon: FaIcon(FontAwesomeIcons.youtube,color: Colors.red,size: 80,),
-                              onPressed: () { print("Pressed"); }
+                              onPressed: _openYoutube,
                           ),
                         ),
                         Container(
@@ -168,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                             // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
                               icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 80,),
-                              onPressed: () { print("Pressed"); }
+                              onPressed: _getBatteryLevel,
                           ),
                         ),
                       ],
@@ -184,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                             // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
                               icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 80,),
-                              onPressed: () { print("Pressed"); }
+                              onPressed: _openMiniProgram2,
                           ),
                         ),
                         Container(
@@ -196,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           IconButton(
                             // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
                               icon: FaIcon(FontAwesomeIcons.chrome,color: Colors.redAccent,size: 80,),
-                              onPressed: () { print("Pressed"); }
+                              onPressed: _openWebview,
                           ),
                         ),
                       ],
