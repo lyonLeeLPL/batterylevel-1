@@ -1,10 +1,11 @@
+import 'package:batterylevel/ThemeColors.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'main2.dart';
+import 'webview.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -126,123 +128,144 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Container(
-          child: Column(
-            children: <Widget>[
-              Container(
-                height: 200,
-                //设置背景图片
-                decoration: new BoxDecoration(
-                  image: new DecorationImage(
-                    // fit: BoxFit.cover,
-                    image: new AssetImage('assets/images/logo_intasect.gif'),
-                  ),
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 160,
+              //设置背景图片
+              decoration: new BoxDecoration(
+                color: Colors.white,
+                image: new DecorationImage(
+                  // fit: BoxFit.cover,
+                  image: new AssetImage('assets/images/logo_intasect.gif'),
                 ),
               ),
-              Container(
-                // decoration: new BoxDecoration(
-                //     border: new Border.all(color: Color(0xFFFF0000), width: 0.5),
-                //     color: Color(0xFF9E9E9E),
-                //     borderRadius: new BorderRadius.circular((20.0))),
-                child: Table(
-                  children: [
-                    TableRow(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            border: new Border.all(color: Colors.grey , width:  1)
+            ),
+            Container(
+              color: Colors.white,
+              height: 290,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    child: Center(
+                      child: Row(
+                        // center the children
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Container(
+                            child: FaIcon(FontAwesomeIcons.yahoo,color: Colors.red,size: 70,),
                           ),
-                          height: 150,
-                          child:
-                          IconButton(
-                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                              icon: FaIcon(FontAwesomeIcons.youtube,color: Colors.red,size: 80,),
+                          Container(
+                            height: 70,
+                            child: FlatButton(
                               onPressed: _openYoutube,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: new Border.all(color: Colors.grey , width:  1)
-                          ),
-                          height: 150,
-                          child:
-                          IconButton(
-                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                              icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 80,),
-                              onPressed: _getBatteryLevel,
-                          ),
-                        ),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              border: new Border.all(color: Colors.grey , width:  1)
-                          ),
-                          height: 150,
-                          child: Container(
-                            child: Center(
-                              child: Column(
-                                children: [
-                                  IconButton(
-                                    icon: FaIcon(FontAwesomeIcons.weixin,color: Colors.green,size: 60,),
-                                    onPressed: _openWebview,
-                                  ),
-                                  Spacer(),
-                                  Text("默认文本显示"),
-                                ],
+                              color: Colors.white,
+                              child: Text("外部App",
+                                style: TextStyle(color: Colors.blue , fontSize: 25),
                               ),
-                            )
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide.none,
+                                  borderRadius: BorderRadius.all(Radius.circular(50))
+                              ),
+                            ),
                           ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                              border: new Border.all(color: Colors.grey , width:  1)
-                          ),
-                          height: 150,
-                          child:
-                          IconButton(
-                            // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                              icon: FaIcon(FontAwesomeIcons.chrome,color: Colors.redAccent,size: 80,),
-                              onPressed: _openWebview,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(width: 1.0, color: ThemeColors.color1),
+                      color: ThemeColors.colorBackground,
+                    ),
+                  ),
+                  //////
+                  Container(
+                    child: Center(
+                      child: Row(
+                        // center the children
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Container(
+                            child: FaIcon(FontAwesomeIcons.chrome,color: Colors.yellow,size: 70,),
+                          ),
+                          Container(
+                            height: 70,
+                            child: FlatButton(
+                              onPressed: _openWebview,
+                              color: Colors.white,
+                              child: Text("H5サイト",
+                                style: TextStyle(color: Colors.blue , fontSize: 25),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide.none,
+                                  borderRadius: BorderRadius.all(Radius.circular(50))
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(width: 1.0, color: ThemeColors.color1),
+                      color: ThemeColors.colorBackground,
+                    ),
+                  ),
 
-                  ],
+                  //////
+                  Container(
+                    child: Center(
+                      child: Row(
+                        // center the children
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Container(
+                            child: FaIcon(FontAwesomeIcons.gripHorizontal,color: Colors.grey,size: 70,),
+                          ),
+                          Container(
+                            height: 70,
+                            child: FlatButton(
+                              onPressed: _openMiniProgram3,
+                              color: Colors.white,
+                              child: Text("ミニアプリ",
+                                style: TextStyle(color: Colors.blue , fontSize: 25),
+                              ),
+                              ///圆角
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide.none,
+                                  borderRadius: BorderRadius.all(Radius.circular(50))
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(width: 1.0, color: ThemeColors.color1),
+                      color: ThemeColors.colorBackground,
+                    ),
+                  ),
 
-                ),
+                  /////
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home), title: Text('ホーム')),
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.tools), title: Text('その他')),
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.bell), title: Text('お知らせ')),
+            BottomNavigationBarItem(
+                icon: Icon(FontAwesomeIcons.user), title: Text('マイページ')),
+          ],
+          type: BottomNavigationBarType.fixed,
+          fixedColor: Colors.green),
     );
   }
 }
 
-class LayoutDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GridView.count(
-
-      crossAxisCount: 3,  //一行的 Widget 数量
-      children: <Widget>[
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本'),
-        Text('这是一个文本')
-      ],
-    );
-  }
-}

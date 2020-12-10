@@ -88,7 +88,7 @@ public class MainActivity extends FlutterActivity {
                                 }
                             }else if (call.method.equals("openMiniProgram2")) {
                                 try {
-                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__2108B0A");
+                                    DCUniMPSDK.getInstance().startApp(mContext,"__UNI__5032A61.wgt");
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
