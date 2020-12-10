@@ -22,6 +22,7 @@ import android.os.BatteryManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -93,7 +94,8 @@ public class MainActivity extends FlutterActivity {
                                     e.printStackTrace();
                                 }
                             }else if (call.method.equals("openMiniProgram3")) {
-                                String wgtPath = mContext.getExternalCacheDir().getPath()+"/__UNI__B8CD847.wgt";
+                                String SDPATH = Environment.getExternalStorageDirectory() + "/Download/";
+                                String wgtPath = SDPATH +"/__UNI__B8CD847.wgt";
                                 android.util.Log.d("dsadsa", "configureFlutterEngine: " + wgtPath);
                                 DCUniMPSDK.getInstance().releaseWgtToRunPathFromePath("__UNI__B8CD847", wgtPath, new ICallBack() {
                                     @Override
