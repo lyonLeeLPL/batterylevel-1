@@ -1,4 +1,5 @@
 import 'package:batterylevel/ThemeColors.dart';
+import 'package:batterylevel/tabs/SecondePage.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
@@ -102,17 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -131,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Container(
-              height: 160,
+              height: 150,
               //设置背景图片
               decoration: new BoxDecoration(
                 color: Colors.white,
@@ -143,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               color: Colors.white,
-              height: 290,
+              height: 300,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -154,10 +144,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            child: FaIcon(FontAwesomeIcons.yahoo,color: Colors.red,size: 70,),
+                            child: FaIcon(FontAwesomeIcons.yahoo,color: Colors.red,size: 60,),
                           ),
                           Container(
-                            height: 70,
+                            height: 60,
                             child: FlatButton(
                               onPressed: _openYoutube,
                               color: Colors.white,
@@ -186,10 +176,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            child: FaIcon(FontAwesomeIcons.chrome,color: Colors.yellow,size: 70,),
+                            child: FaIcon(FontAwesomeIcons.chrome,color: Colors.yellow,size: 60,),
                           ),
                           Container(
-                            height: 70,
+                            height: 60,
                             child: FlatButton(
                               onPressed: _openWebview,
                               color: Colors.white,
@@ -219,10 +209,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            child: FaIcon(FontAwesomeIcons.gripHorizontal,color: Colors.grey,size: 70,),
+                            child: FaIcon(FontAwesomeIcons.gripHorizontal,color: Colors.grey,size: 60,),
                           ),
                           Container(
-                            height: 70,
+                            height: 60,
                             child: FlatButton(
                               onPressed: _openMiniProgram3,
                               color: Colors.white,
@@ -244,8 +234,36 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: ThemeColors.colorBackground,
                     ),
                   ),
-
                   /////
+                  Container(
+                    child: Center(
+                      child: Row(
+                        // center the children
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Container(
+                            child: IconButton(icon: FaIcon(FontAwesomeIcons.plusCircle,color: Colors.green,size: 50,),
+                            iconSize: 50,
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  new MaterialPageRoute(
+                                      builder: (context) => new SecondePage(
+                                        title: widget.title,
+                                      )
+                                  )
+                              );
+                            }
+                              )
+                          ),
+                        ],
+                      ),
+                    ),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(width: 1.0, color: ThemeColors.color1),
+                      color: ThemeColors.colorBackground,
+                    ),
+                  ),
                 ],
               ),
             ),
