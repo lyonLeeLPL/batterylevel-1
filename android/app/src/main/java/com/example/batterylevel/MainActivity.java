@@ -2,6 +2,8 @@ package com.example.batterylevel;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import io.dcloud.common.DHInterface.ICallBack;
 import io.dcloud.feature.sdk.DCSDKInitConfig;
@@ -14,10 +16,12 @@ import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
 import io.flutter.plugin.common.MethodChannel;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.BatteryManager;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -70,7 +74,7 @@ public class MainActivity extends FlutterActivity {
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {
         super.configureFlutterEngine(flutterEngine);
 
-        checkNeedPermissions()
+        checkNeedPermissions();
 
         new MethodChannel(flutterEngine.getDartExecutor().getBinaryMessenger(), CHANNEL)
                 .setMethodCallHandler(
