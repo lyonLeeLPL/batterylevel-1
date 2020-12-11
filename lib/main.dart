@@ -144,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           Container(
-                            child: FaIcon(FontAwesomeIcons.yahoo,color: Colors.red,size: 60,),
+                            child: FaIcon(FontAwesomeIcons.youtube,color: Colors.red,size: 60,),
                           ),
                           Container(
                             height: 60,
