@@ -100,16 +100,16 @@ public class MainActivity extends FlutterActivity {
                                 }
                             }else if (call.method.equals("openMiniProgram3")) {
                                 String SDPATH = Environment.getExternalStorageDirectory() + "/Download/";
-                                String wgtPath = SDPATH +"/__UNI__B8CD847.wgt";
+                                String wgtPath = SDPATH +"/__UNI__5032A61.wgt";
                                 android.util.Log.d("dsadsa", "configureFlutterEngine: " + wgtPath);
-                                DCUniMPSDK.getInstance().releaseWgtToRunPathFromePath("__UNI__B8CD847", wgtPath, new ICallBack() {
+                                DCUniMPSDK.getInstance().releaseWgtToRunPathFromePath("__UNI__5032A61", wgtPath, new ICallBack() {
                                     @Override
                                     public Object onCallBack(int code, Object pArgs) {
                                         if(code ==1) {//释放wgt完成
                                             try {
                                                 Toast.makeText(getApplicationContext(), wgtPath,
                                                         Toast.LENGTH_SHORT).show();
-                                                DCUniMPSDK.getInstance().startApp(mContext, "__UNI__B8CD847");
+                                                DCUniMPSDK.getInstance().startApp(mContext, "__UNI__5032A61");
                                             } catch (Exception e) {
                                                 e.printStackTrace();
                                             }
