@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'スーパーアプリ'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -127,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white,
                 image: new DecorationImage(
                   // fit: BoxFit.cover,
-                  image: new AssetImage('assets/images/logo_intasect.gif'),
+                  image: new AssetImage('assets/images/logo.jpg'),
                 ),
               ),
             ),

@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.white,
                   image: new DecorationImage(
                     // fit: BoxFit.cover,
-                    image: new AssetImage('assets/images/logo_intasect.gif'),
+                    image: new AssetImage('assets/images/logo.jpg'),
                   ),
                 ),
               ),

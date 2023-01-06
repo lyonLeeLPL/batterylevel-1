@@ -80,5 +80,4 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
-      - 'assets/images/background.png'
-      - 'assets/images/logo_intasect.gif'
+      - 'assets/images/logo.jpg'
